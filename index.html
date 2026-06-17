@@ -1,40 +1,1021 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="th">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Neko7Sharm - Homepage</title>
-    <meta name="description" content="Welcome to Neko7Sharm's digital universe. Discover projects, open-source contributions, and more.">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <title>Portfolio - Phuwadech Nayam | Computer Engineer Student</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/prompt@5.0.5/index.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        latte: {
+                            50: '#FDF8F3',
+                            100: '#F5EBE0',
+                            200: '#E8D5C4',
+                            300: '#D4B896',
+                            400: '#C8A882',
+                            500: '#A67B5B',
+                            600: '#8B6F47',
+                            700: '#6F5637',
+                            800: '#5C4033',
+                            900: '#3E2723',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Prompt', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
     <link rel="stylesheet" href="styles.css">
 </head>
-<body>
-    <div class="container">
-        <header>
-            <h1 class="gradient-text">Welcome to My Space</h1>
-            <p class="subtitle">Exploring the digital universe, one line of code at a time.</p>
-        </header>
-        
-        <main>
-            <div class="card-grid">
-                <a href="#" class="card">
-                    <h2>Projects</h2>
-                    <p>Discover my latest creations and open-source contributions.</p>
+<body class="antialiased">
+
+    <!-- Loading Screen -->
+    <div id="loading-screen">
+        <div class="relative">
+            <div class="steam-container">
+                <div class="steam"></div>
+                <div class="steam"></div>
+                <div class="steam"></div>
+            </div>
+            <div class="coffee-cup">
+                <div class="coffee-face">
+                    <div class="eye left"></div>
+                    <div class="eye right"></div>
+                    <div class="mouth"></div>
+                </div>
+            </div>
+        </div>
+        <div class="loading-text">กรุณารอสักครู่...</div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-latte-50/80 backdrop-blur-md border-b border-latte-200">
+        <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+            <a href="#" class="text-2xl font-bold text-latte-800 flex items-center gap-2">
+                <i class="fa-solid fa-mug-hot text-latte-500"></i>
+                <span>Phuwadech</span>
+            </a>
+            
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex items-center gap-8">
+                <a href="#intro" class="nav-link text-latte-700 hover:text-latte-500 font-medium transition-colors">แนะนำตัว</a>
+                <a href="#about" class="nav-link text-latte-700 hover:text-latte-500 font-medium transition-colors">ข้อมูลส่วนตัว</a>
+                <a href="#experience" class="nav-link text-latte-700 hover:text-latte-500 font-medium transition-colors">ประสบการณ์</a>
+                <a href="#portfolio" class="nav-link text-latte-700 hover:text-latte-500 font-medium transition-colors">ผลงาน</a>
+                <button onclick="openModal()" class="bg-latte-500 text-white px-5 py-2 rounded-full hover:bg-latte-600 transition-colors font-medium shadow-md hover:shadow-lg">
+                    <i class="fa-solid fa-graduation-cap mr-2"></i>การศึกษา & คะแนน
+                </button>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="md:hidden text-latte-700 text-2xl">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-latte-50 border-t border-latte-200 px-6 py-4 space-y-3">
+            <a href="#intro" class="block text-latte-700 hover:text-latte-500 font-medium py-2" onclick="closeMobileMenu()">แนะนำตัว</a>
+            <a href="#about" class="block text-latte-700 hover:text-latte-500 font-medium py-2" onclick="closeMobileMenu()">ข้อมูลส่วนตัว</a>
+            <a href="#experience" class="block text-latte-700 hover:text-latte-500 font-medium py-2" onclick="closeMobileMenu()">ประสบการณ์</a>
+            <a href="#portfolio" class="block text-latte-700 hover:text-latte-500 font-medium py-2" onclick="closeMobileMenu()">ผลงาน</a>
+            <button onclick="openModal(); closeMobileMenu();" class="w-full text-left bg-latte-500 text-white px-5 py-3 rounded-xl font-medium">
+                <i class="fa-solid fa-graduation-cap mr-2"></i>การศึกษา & คะแนน
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero / Intro Section -->
+    <section id="intro" class="min-h-screen flex items-center pt-20 pb-16 px-6">
+        <div class="max-w-6xl mx-auto w-full grid md:grid-cols-2 gap-12 items-center">
+            <div class="fade-in-section order-2 md:order-1">
+                <div class="inline-block bg-latte-200 text-latte-700 px-4 py-1.5 rounded-full text-sm font-medium mb-6">
+                    <i class="fa-solid fa-laptop-code mr-2"></i>Computer Engineer Student
+                </div>
+                <h1 class="text-4xl md:text-6xl font-bold text-latte-800 mb-2 leading-tight">
+                    สวัสดีครับ
+                </h1>
+                <h2 class="text-3xl md:text-5xl font-bold text-latte-500 mb-1 leading-tight">
+                    ภูวเดช นาแหยม
+                </h2>
+                <p class="text-xl md:text-2xl text-latte-400 font-light mb-6 tracking-wide">
+                    Phuwadech Nayam
+                </p>
+                <p class="text-lg text-latte-600 mb-8 leading-relaxed max-w-lg">
+                    นักศึกษาวิศวกรรมคอมพิวเตอร์ ชั้นปีที่ 4 
+                    มหาวิทยาลัยศรีนครินทรวิโรฒ 
+                    มีความสนใจด้าน Front-End Development, Graphic Design และ UX/UI Design
+                    พร้อมเรียนรู้และพัฒนาตนเองอยู่เสมอ
+                </p>
+                <div class="flex flex-wrap gap-4">
+                    <a href="#portfolio" class="bg-latte-500 text-white px-8 py-3 rounded-full hover:bg-latte-600 transition-all shadow-lg hover:shadow-xl font-medium">
+                        ดูผลงาน <i class="fa-solid fa-arrow-right ml-2"></i>
+                    </a>
+                    <a href="#about" class="border-2 border-latte-400 text-latte-700 px-8 py-3 rounded-full hover:bg-latte-100 transition-all font-medium">
+                        ติดต่อฉัน
+                    </a>
+                </div>
+                
+                <!-- Social Links -->
+                <div class="flex gap-4 mt-8">
+                    <a href="#" class="w-10 h-10 rounded-full bg-latte-100 flex items-center justify-center text-latte-600 hover:bg-latte-500 hover:text-white transition-all">
+                        <i class="fa-brands fa-github text-lg"></i>
+                    </a>
+                    <a href="#" class="w-10 h-10 rounded-full bg-latte-100 flex items-center justify-center text-latte-600 hover:bg-latte-500 hover:text-white transition-all">
+                        <i class="fa-brands fa-linkedin-in text-lg"></i>
+                    </a>
+                    <a href="#" class="w-10 h-10 rounded-full bg-latte-100 flex items-center justify-center text-latte-600 hover:bg-latte-500 hover:text-white transition-all">
+                        <i class="fa-brands fa-facebook-f text-lg"></i>
+                    </a>
+                    <a href="mailto:phurins2545@gmail.com" class="w-10 h-10 rounded-full bg-latte-100 flex items-center justify-center text-latte-600 hover:bg-latte-500 hover:text-white transition-all">
+                        <i class="fa-solid fa-envelope text-lg"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="fade-in-section order-1 md:order-2 flex justify-center">
+                <div class="profile-container">
+                    <div class="profile-ring"></div>
+                    <div class="profile-image w-72 h-72 md:w-96 md:h-96">
+                        <img src="https://image.qwenlm.ai/public_source/505fa628-0dfd-4406-bcc1-f3b10f2f31d4/15468aa41-b030-477b-8a1d-072f7a7e20c1.png" 
+                             alt="Phuwadech Nayam">
+                    </div>
+                    
+                    <!-- Floating badges -->
+                    <div class="absolute -top-4 -left-4 bg-white px-4 py-2 rounded-2xl shadow-lg flex items-center gap-2 animate-bounce" style="animation-duration: 3s;">
+                        <i class="fa-brands fa-react text-blue-400 text-xl"></i>
+                        <span class="text-sm font-medium text-latte-700">React</span>
+                    </div>
+                    <div class="absolute top-1/2 -right-8 bg-white px-4 py-2 rounded-2xl shadow-lg flex items-center gap-2 animate-bounce" style="animation-duration: 4s; animation-delay: 1s;">
+                        <i class="fa-brands fa-android text-green-500 text-xl"></i>
+                        <span class="text-sm font-medium text-latte-700">Android</span>
+                    </div>
+                    <div class="absolute -bottom-4 left-1/4 bg-white px-4 py-2 rounded-2xl shadow-lg flex items-center gap-2 animate-bounce" style="animation-duration: 3.5s; animation-delay: 0.5s;">
+                        <i class="fa-solid fa-database text-purple-500 text-xl"></i>
+                        <span class="text-sm font-medium text-latte-700">SQL</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Personal Info Section -->
+    <section id="about" class="py-20 px-6 bg-latte-100/50">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16 fade-in-section">
+                <h2 class="text-3xl md:text-4xl font-bold text-latte-800 mb-4">ข้อมูลส่วนตัว</h2>
+                <div class="w-20 h-1 bg-latte-400 mx-auto rounded-full"></div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8 fade-in-section">
+                <!-- Contact Info -->
+                <div class="bg-white rounded-3xl p-8 shadow-sm border border-latte-200">
+                    <h3 class="text-xl font-bold text-latte-800 mb-6 flex items-center gap-3">
+                        <i class="fa-solid fa-address-card text-latte-500"></i>
+                        ข้อมูลการติดต่อ
+                    </h3>
+                    <div class="space-y-5">
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-xl bg-latte-100 flex items-center justify-center text-latte-500 flex-shrink-0">
+                                <i class="fa-solid fa-user"></i>
+                            </div>
+                            <div>
+                                <p class="text-sm text-latte-500 mb-1">ชื่อ-นามสกุล (ภาษาไทย)</p>
+                                <p class="text-latte-800 font-medium">ภูวเดช นาแหยม</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-xl bg-latte-100 flex items-center justify-center text-latte-500 flex-shrink-0">
+                                <i class="fa-solid fa-font"></i>
+                            </div>
+                            <div>
+                                <p class="text-sm text-latte-500 mb-1">ชื่อ-นามสกุล (ภาษาอังกฤษ)</p>
+                                <p class="text-latte-800 font-medium">Phuwadech Nayam</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-xl bg-latte-100 flex items-center justify-center text-latte-500 flex-shrink-0">
+                                <i class="fa-solid fa-envelope"></i>
+                            </div>
+                            <div>
+                                <p class="text-sm text-latte-500 mb-1">อีเมล</p>
+                                <p class="text-latte-800 font-medium">phurins2545@gmail.com</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-xl bg-latte-100 flex items-center justify-center text-latte-500 flex-shrink-0">
+                                <i class="fa-solid fa-phone"></i>
+                            </div>
+                            <div>
+                                <p class="text-sm text-latte-500 mb-1">โทรศัพท์</p>
+                                <p class="text-latte-800 font-medium">061-7920809</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-xl bg-latte-100 flex items-center justify-center text-latte-500 flex-shrink-0">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <div>
+                                <p class="text-sm text-latte-500 mb-1">ที่อยู่</p>
+                                <p class="text-latte-800 font-medium text-sm leading-relaxed">2234/3505 Navikyothin, Moo 1,<br>Sattahip Subdistrict, Sattahip District,<br>Chonburi Province 20180</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Skills -->
+                <div class="bg-white rounded-3xl p-8 shadow-sm border border-latte-200">
+                    <h3 class="text-xl font-bold text-latte-800 mb-6 flex items-center gap-3">
+                        <i class="fa-solid fa-laptop-code text-latte-500"></i>
+                        ทักษะและความสามารถ
+                    </h3>
+                    
+                    <div class="mb-5">
+                        <p class="text-sm text-latte-500 mb-3 font-medium">
+                            <i class="fa-solid fa-code mr-1"></i> Programming Languages
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="skill-tag bg-latte-100 text-latte-700 px-4 py-2 rounded-full text-sm font-medium cursor-default">C</span>
+                            <span class="skill-tag bg-latte-100 text-latte-700 px-4 py-2 rounded-full text-sm font-medium cursor-default">Java</span>
+                            <span class="skill-tag bg-latte-100 text-latte-700 px-4 py-2 rounded-full text-sm font-medium cursor-default">PHP</span>
+                            <span class="skill-tag bg-latte-100 text-latte-700 px-4 py-2 rounded-full text-sm font-medium cursor-default">HTML/CSS</span>
+                            <span class="skill-tag bg-latte-100 text-latte-700 px-4 py-2 rounded-full text-sm font-medium cursor-default">JavaScript</span>
+                            <span class="skill-tag bg-latte-100 text-latte-700 px-4 py-2 rounded-full text-sm font-medium cursor-default">Python</span>
+                        </div>
+                    </div>
+
+                    <div class="mb-5">
+                        <p class="text-sm text-latte-500 mb-3 font-medium">
+                            <i class="fa-solid fa-database mr-1"></i> Database & Development
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="skill-tag bg-latte-100 text-latte-700 px-4 py-2 rounded-full text-sm font-medium cursor-default">MySQL</span>
+                            <span class="skill-tag bg-latte-100 text-latte-700 px-4 py-2 rounded-full text-sm font-medium cursor-default">MongoDB</span>
+                            <span class="skill-tag bg-latte-100 text-latte-700 px-4 py-2 rounded-full text-sm font-medium cursor-default">React</span>
+                            <span class="skill-tag bg-latte-100 text-latte-700 px-4 py-2 rounded-full text-sm font-medium cursor-default">Node.js</span>
+                            <span class="skill-tag bg-latte-100 text-latte-700 px-4 py-2 rounded-full text-sm font-medium cursor-default">Android</span>
+                        </div>
+                    </div>
+
+                    <div class="mb-5">
+                        <p class="text-sm text-latte-500 mb-3 font-medium">
+                            <i class="fa-solid fa-palette mr-1"></i> Graphic & UX/UI Design
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="skill-tag bg-latte-100 text-latte-700 px-4 py-2 rounded-full text-sm font-medium cursor-default">Adobe Photoshop</span>
+                            <span class="skill-tag bg-latte-100 text-latte-700 px-4 py-2 rounded-full text-sm font-medium cursor-default">Adobe XD</span>
+                            <span class="skill-tag bg-latte-100 text-latte-700 px-4 py-2 rounded-full text-sm font-medium cursor-default">Adobe Illustrator</span>
+                            <span class="skill-tag bg-latte-100 text-latte-700 px-4 py-2 rounded-full text-sm font-medium cursor-default">Figma</span>
+                        </div>
+                    </div>
+
+                    <div>
+                        <p class="text-sm text-latte-500 mb-3 font-medium">
+                            <i class="fa-solid fa-star mr-1"></i> Soft Skills
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="skill-tag bg-latte-100 text-latte-700 px-4 py-2 rounded-full text-sm font-medium cursor-default">Front-End Development</span>
+                            <span class="skill-tag bg-latte-100 text-latte-700 px-4 py-2 rounded-full text-sm font-medium cursor-default">การเรียนรู้เร็ว</span>
+                            <span class="skill-tag bg-latte-100 text-latte-700 px-4 py-2 rounded-full text-sm font-medium cursor-default">ทำงานเป็นทีม</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Languages -->
+                <div class="bg-white rounded-3xl p-8 shadow-sm border border-latte-200">
+                    <h3 class="text-xl font-bold text-latte-800 mb-6 flex items-center gap-3">
+                        <i class="fa-solid fa-language text-latte-500"></i>
+                        ภาษา
+                    </h3>
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium text-latte-800">🇹🇭 ไทย (Thai)</span>
+                                <span class="text-sm text-latte-600">Native</span>
+                            </div>
+                            <div class="w-full bg-latte-100 rounded-full h-2.5">
+                                <div class="bg-latte-500 h-2.5 rounded-full typing-bar" style="width: 100%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium text-latte-800">🇬🇧 อังกฤษ (English)</span>
+                                <span class="text-sm text-latte-600">Normal</span>
+                            </div>
+                            <div class="w-full bg-latte-100 rounded-full h-2.5">
+                                <div class="bg-latte-500 h-2.5 rounded-full typing-bar" style="width: 55%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium text-latte-800">🇵 ญี่ปุ่น (Japanese)</span>
+                                <span class="text-sm text-latte-600">Basic</span>
+                            </div>
+                            <div class="w-full bg-latte-100 rounded-full h-2.5">
+                                <div class="bg-latte-500 h-2.5 rounded-full typing-bar" style="width: 25%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Typing Speed -->
+                <div class="bg-white rounded-3xl p-8 shadow-sm border border-latte-200">
+                    <h3 class="text-xl font-bold text-latte-800 mb-6 flex items-center gap-3">
+                        <i class="fa-solid fa-keyboard text-latte-500"></i>
+                        ความเร็วในการพิมพ์
+                    </h3>
+                    <div class="space-y-6">
+                        <div>
+                            <div class="flex justify-between items-end mb-2">
+                                <div>
+                                    <p class="font-medium text-latte-800">ภาษาไทย</p>
+                                    <p class="text-xs text-latte-500">Thai Language</p>
+                                </div>
+                                <div class="text-right">
+                                    <span class="text-3xl font-bold text-latte-500">25</span>
+                                    <span class="text-sm text-latte-600 ml-1">คำ/นาที</span>
+                                </div>
+                            </div>
+                            <div class="w-full bg-latte-100 rounded-full h-3">
+                                <div class="bg-gradient-to-r from-latte-400 to-latte-500 h-3 rounded-full typing-bar" style="width: 50%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between items-end mb-2">
+                                <div>
+                                    <p class="font-medium text-latte-800">ภาษาอังกฤษ</p>
+                                    <p class="text-xs text-latte-500">English Language</p>
+                                </div>
+                                <div class="text-right">
+                                    <span class="text-3xl font-bold text-latte-500">30</span>
+                                    <span class="text-sm text-latte-600 ml-1">คำ/นาที</span>
+                                </div>
+                            </div>
+                            <div class="w-full bg-latte-100 rounded-full h-3">
+                                <div class="bg-gradient-to-r from-latte-400 to-latte-500 h-3 rounded-full typing-bar" style="width: 60%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-20 px-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16 fade-in-section">
+                <h2 class="text-3xl md:text-4xl font-bold text-latte-800 mb-4">ประสบการณ์ทำงาน</h2>
+                <div class="w-20 h-1 bg-latte-400 mx-auto rounded-full mb-4"></div>
+                <p class="text-latte-600 max-w-2xl mx-auto">ประสบการณ์ทำงานและโครงการที่เคยมีส่วนร่วม</p>
+            </div>
+
+            <div class="fade-in-section">
+                <!-- Work Experience -->
+                <div class="bg-white rounded-3xl p-8 md:p-10 shadow-sm border border-latte-200 mb-8">
+                    <div class="flex items-center gap-3 mb-8">
+                        <div class="w-12 h-12 rounded-2xl bg-latte-500 text-white flex items-center justify-center">
+                            <i class="fa-solid fa-briefcase text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-latte-800">ประสบการณ์ทำงาน</h3>
+                            <p class="text-sm text-latte-500">Work Experience</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="flex flex-wrap items-baseline justify-between gap-2 mb-2">
+                            <h4 class="text-lg font-bold text-latte-800">JLhome</h4>
+                            <span class="text-sm bg-latte-200 text-latte-700 px-3 py-1 rounded-full">ส.ค. - ธ.ค. 2567</span>
+                        </div>
+                        <p class="text-latte-500 text-sm mb-3">ฝ่ายผลิตสื่อกราฟฟิค • งานออกแบบเว็บไซต์/Web</p>
+                        <ul class="space-y-2 text-latte-700 text-sm">
+                            <li class="flex items-start gap-2">
+                                <i class="fa-solid fa-check text-latte-500 mt-1"></i>
+                                <span>ออกแบบโปสเตอร์</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fa-solid fa-check text-latte-500 mt-1"></i>
+                                <span>ออกแบบเว็บไซต์ใหม่</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fa-solid fa-check text-latte-500 mt-1"></i>
+                                <span>ปรับปรุงเว็บไซต์เดิม</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fa-solid fa-check text-latte-500 mt-1"></i>
+                                <span>ปรับปรุงระบบในเว็บไซต์ (การรับ-ส่งข้อมูลจาก Database)</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fa-solid fa-check text-latte-500 mt-1"></i>
+                                <span>ตรวจสอบข้อมูลจาก ERP</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fa-solid fa-check text-latte-500 mt-1"></i>
+                                <span>ปรับปรุงหน้า Admin ของเว็บไซต์เพื่อให้ตรวจสอบข้อมูลง่ายขึ้น</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fa-solid fa-check text-latte-500 mt-1"></i>
+                                <span>สร้างเว็บไซต์ใหม่</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Projects Timeline -->
+                <div class="bg-white rounded-3xl p-8 md:p-10 shadow-sm border border-latte-200">
+                    <div class="flex items-center gap-3 mb-8">
+                        <div class="w-12 h-12 rounded-2xl bg-latte-500 text-white flex items-center justify-center">
+                            <i class="fa-solid fa-diagram-project text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-latte-800">โครงการที่เคยทำ</h3>
+                            <p class="text-sm text-latte-500">Projects</p>
+                        </div>
+                    </div>
+
+                    <div class="space-y-6">
+                        <!-- 2025 - Android App (In Progress) -->
+                        <div class="timeline-item">
+                            <div class="timeline-dot progress"></div>
+                            <div class="flex flex-wrap items-baseline justify-between gap-2 mb-2">
+                                <span class="text-sm bg-gradient-to-r from-latte-400 to-latte-500 text-white px-3 py-1 rounded-full font-semibold">
+                                    <i class="fa-solid fa-spinner fa-spin mr-1"></i>2025
+                                </span>
+                                <span class="text-xs bg-latte-100 text-latte-700 px-3 py-1 rounded-full in-progress-badge">
+                                    <i class="fa-solid fa-clock text-latte-500 mr-1"></i>กำลังศึกษา
+                                </span>
+                            </div>
+                            <div class="bg-gradient-to-br from-latte-50 to-latte-100 rounded-2xl p-5 border-2 border-dashed border-latte-300 mt-3">
+                                <div class="flex items-start gap-3 mb-3">
+                                    <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center flex-shrink-0">
+                                        <i class="fa-brands fa-android text-white text-2xl"></i>
+                                    </div>
+                                    <div class="flex-1">
+                                        <h4 class="text-lg font-bold text-latte-800">Android Application Development</h4>
+                                        <p class="text-sm text-latte-600">กำลังศึกษาระบบการพัฒนาแอปพลิเคชัน Android</p>
+                                    </div>
+                                </div>
+                                <div class="flex flex-wrap gap-2 mb-3">
+                                    <span class="text-xs bg-white text-latte-700 px-3 py-1 rounded-full border border-latte-200">Android Studio</span>
+                                    <span class="text-xs bg-white text-latte-700 px-3 py-1 rounded-full border border-latte-200">Java/Kotlin</span>
+                                    <span class="text-xs bg-white text-latte-700 px-3 py-1 rounded-full border border-latte-200">Mobile Dev</span>
+                                </div>
+                                <div class="mb-3">
+                                    <div class="flex justify-between text-sm mb-1">
+                                        <span class="text-latte-700 font-medium">ความคืบหน้า</span>
+                                        <span class="text-latte-800 font-bold">กำลังเรียนรู้</span>
+                                    </div>
+                                    <div class="w-full bg-white rounded-full h-2.5">
+                                        <div class="bg-gradient-to-r from-latte-400 to-latte-500 h-2.5 rounded-full" style="width: 35%"></div>
+                                    </div>
+                                </div>
+                                <ul class="space-y-2 text-latte-700 text-sm">
+                                    <li class="flex items-start gap-2">
+                                        <i class="fa-solid fa-graduation-cap text-latte-500 mt-1"></i>
+                                        <span>กำลังศึกษาพื้นฐาน Android Development</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <i class="fa-solid fa-graduation-cap text-latte-500 mt-1"></i>
+                                        <span>เรียนรู้ระบบการ Deploy แอปขึ้น Play Store</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <i class="fa-solid fa-graduation-cap text-latte-500 mt-1"></i>
+                                        <span>ศึกษา UI/UX สำหรับ Mobile Application</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- 2024 - E-Commerce (Featured) -->
+                        <div class="timeline-item">
+                            <div class="timeline-dot featured"></div>
+                            <div class="flex flex-wrap items-baseline justify-between gap-2 mb-2">
+                                <span class="text-sm bg-latte-500 text-white px-3 py-1 rounded-full font-semibold">
+                                    <i class="fa-solid fa-sparkles mr-1"></i>2024
+                                </span>
+                                <span class="text-xs bg-latte-100 text-latte-700 px-3 py-1 rounded-full">
+                                    <i class="fa-solid fa-crown text-yellow-500 mr-1"></i>Featured Project
+                                </span>
+                            </div>
+                            <div class="bg-gradient-to-br from-latte-50 to-latte-100 rounded-2xl p-5 border border-latte-200 mt-3">
+                                <div class="flex items-start gap-3 mb-3">
+                                    <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-latte-400 to-latte-600 flex items-center justify-center flex-shrink-0">
+                                        <i class="fa-solid fa-cart-shopping text-white text-xl"></i>
+                                    </div>
+                                    <div class="flex-1">
+                                        <h4 class="text-lg font-bold text-latte-800">E-Commerce Website</h4>
+                                        <p class="text-sm text-latte-600">เว็บไซต์ขายสินค้าออนไลน์ครบวงจร</p>
+                                    </div>
+                                </div>
+                                <div class="flex flex-wrap gap-2 mb-3">
+                                    <span class="text-xs bg-white text-latte-700 px-3 py-1 rounded-full border border-latte-200">Front-End</span>
+                                    <span class="text-xs bg-white text-latte-700 px-3 py-1 rounded-full border border-latte-200">Back-End</span>
+                                    <span class="text-xs bg-white text-latte-700 px-3 py-1 rounded-full border border-latte-200">Database</span>
+                                    <span class="text-xs bg-white text-latte-700 px-3 py-1 rounded-full border border-latte-200">UX/UI</span>
+                                </div>
+                                <ul class="space-y-2 text-latte-700 text-sm">
+                                    <li class="flex items-start gap-2">
+                                        <i class="fa-solid fa-check-circle text-latte-500 mt-1"></i>
+                                        <span>ออกแบบและพัฒนาเว็บไซต์ E-Commerce แบบครบวงจร</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <i class="fa-solid fa-check-circle text-latte-500 mt-1"></i>
+                                        <span>ระบบจัดการสินค้า (Product Management)</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <i class="fa-solid fa-check-circle text-latte-500 mt-1"></i>
+                                        <span>ระบบตะกร้าสินค้าและชำระเงิน (Cart & Checkout)</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <i class="fa-solid fa-check-circle text-latte-500 mt-1"></i>
+                                        <span>ระบบสมาชิกและประวัติการสั่งซื้อ</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <i class="fa-solid fa-check-circle text-latte-500 mt-1"></i>
+                                        <span>Responsive Design รองรับทุกอุปกรณ์</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- 2023 -->
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <span class="text-sm bg-latte-200 text-latte-700 px-3 py-1 rounded-full mb-2 inline-block">2023</span>
+                            <div class="space-y-3 mt-2">
+                                <div class="bg-latte-50 rounded-xl p-4">
+                                    <h4 class="font-bold text-latte-800 mb-1">Food Sampling & Selling Website</h4>
+                                    <p class="text-sm text-latte-600">สร้างเว็บไซต์เกี่ยวกับตัวอย่างอาหารและการขายอาหาร • ตำแหน่ง: <span class="font-medium text-latte-700">Graphic Design</span></p>
+                                </div>
+                                <div class="bg-latte-50 rounded-xl p-4">
+                                    <h4 class="font-bold text-latte-800 mb-1">Hyperventilation Syndrome App</h4>
+                                    <p class="text-sm text-latte-600">สร้างแอปพลิเคชันเกี่ยวกับการฝึกหายใจบน Android Studio • ตำแหน่ง: <span class="font-medium text-latte-700">UX/UI</span></p>
+                                </div>
+                                <div class="bg-latte-50 rounded-xl p-4">
+                                    <h4 class="font-bold text-latte-800 mb-1">Shabu Restaurant Table Reservation</h4>
+                                    <p class="text-sm text-latte-600">สร้างเว็บไซต์จองโต๊ะร้านอาหารชาบู • ตำแหน่ง: <span class="font-medium text-latte-700">Database</span></p>
+                                </div>
+                                <div class="bg-latte-50 rounded-xl p-4">
+                                    <h4 class="font-bold text-latte-800 mb-1">Line Chatbot with Dialogflow</h4>
+                                    <p class="text-sm text-latte-600">สร้าง Line Chatbot ด้วย Dialogflow</p>
+                                </div>
+                                <div class="bg-latte-50 rounded-xl p-4">
+                                    <h4 class="font-bold text-latte-800 mb-1">Knowledge Base Editor</h4>
+                                    <p class="text-sm text-latte-600">สร้าง Knowledge Base Editor • ตำแหน่ง: <span class="font-medium text-latte-700">Software Tester</span></p>
+                                </div>
+                                <div class="bg-latte-50 rounded-xl p-4">
+                                    <h4 class="font-bold text-latte-800 mb-1">Fruits & Vegetables Maturity Classifier</h4>
+                                    <p class="text-sm text-latte-600">สร้างแอปพลิเคชันจำแนกความสุกและทำนายวันหมดอายุของผักและผลไม้ • ตำแหน่ง: <span class="font-medium text-latte-700">Front End</span></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 2022 -->
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <span class="text-sm bg-latte-200 text-latte-700 px-3 py-1 rounded-full mb-2 inline-block">2022</span>
+                            <h4 class="font-bold text-latte-800 mb-1">Game with Bubble Theory</h4>
+                            <p class="text-sm text-latte-600">สร้างเกมด้วยทฤษฎี Bubble • ตำแหน่ง: <span class="font-medium text-latte-700">UX/UI</span></p>
+                        </div>
+
+                        <!-- 2021 -->
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <span class="text-sm bg-latte-200 text-latte-700 px-3 py-1 rounded-full mb-2 inline-block">2021</span>
+                            <h4 class="font-bold text-latte-800 mb-1">HololiveWikiTH</h4>
+                            <p class="text-sm text-latte-600">ช่วยเหลือกลุ่มสร้างเว็บไซต์ • ตำแหน่ง: <span class="font-medium text-latte-700">Data Analysis</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="py-20 px-6 bg-latte-100/50">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16 fade-in-section">
+                <h2 class="text-3xl md:text-4xl font-bold text-latte-800 mb-4">ผลงานเด่น</h2>
+                <div class="w-20 h-1 bg-latte-400 mx-auto rounded-full mb-4"></div>
+                <p class="text-latte-600 max-w-2xl mx-auto">ตัวอย่างผลงานที่ผมได้พัฒนาและออกแบบ</p>
+            </div>
+
+            <div class="fade-in-section">
+                <!-- Featured Project - E-Commerce -->
+                <div class="featured-card bg-white rounded-3xl overflow-hidden shadow-lg border border-latte-200 mb-8">
+                    <div class="featured-badge">
+                        <i class="fa-solid fa-star mr-1"></i> Latest Project • 2024
+                    </div>
+                    <div class="grid md:grid-cols-2">
+                        <div class="h-64 md:h-auto bg-gradient-to-br from-latte-400 via-latte-500 to-latte-600 flex items-center justify-center relative overflow-hidden">
+                            <div class="absolute inset-0 opacity-20">
+                                <div class="absolute top-10 left-10 w-32 h-32 bg-white rounded-full"></div>
+                                <div class="absolute bottom-10 right-10 w-48 h-48 bg-white rounded-full"></div>
+                            </div>
+                            <i class="fa-solid fa-cart-shopping text-white text-7xl opacity-90 relative z-10"></i>
+                        </div>
+                        <div class="p-8 md:p-10">
+                            <div class="flex flex-wrap gap-2 mb-3">
+                                <span class="text-xs bg-latte-100 text-latte-700 px-3 py-1 rounded-full">Front-End</span>
+                                <span class="text-xs bg-latte-100 text-latte-700 px-3 py-1 rounded-full">Back-End</span>
+                                <span class="text-xs bg-latte-100 text-latte-700 px-3 py-1 rounded-full">Database</span>
+                                <span class="text-xs bg-latte-100 text-latte-700 px-3 py-1 rounded-full">UX/UI</span>
+                            </div>
+                            <h3 class="text-2xl md:text-3xl font-bold text-latte-800 mb-3">E-Commerce Website</h3>
+                            <p class="text-latte-600 mb-5 leading-relaxed">
+                                เว็บไซต์ขายสินค้าออนไลน์แบบครบวงจร พัฒนาตั้งแต่การออกแบบ UX/UI 
+                                จนถึงการ implement ระบบ Front-End, Back-End และ Database 
+                                รองรับการใช้งานบนทุกอุปกรณ์
+                            </p>
+                            <div class="space-y-2 mb-6">
+                                <div class="flex items-center gap-2 text-sm text-latte-700">
+                                    <i class="fa-solid fa-box-open text-latte-500"></i>
+                                    <span>ระบบจัดการสินค้า (Product Management)</span>
+                                </div>
+                                <div class="flex items-center gap-2 text-sm text-latte-700">
+                                    <i class="fa-solid fa-cart-plus text-latte-500"></i>
+                                    <span>ตะกร้าสินค้าและระบบชำระเงิน</span>
+                                </div>
+                                <div class="flex items-center gap-2 text-sm text-latte-700">
+                                    <i class="fa-solid fa-user-group text-latte-500"></i>
+                                    <span>ระบบสมาชิกและประวัติการสั่งซื้อ</span>
+                                </div>
+                                <div class="flex items-center gap-2 text-sm text-latte-700">
+                                    <i class="fa-solid fa-mobile-screen text-latte-500"></i>
+                                    <span>Responsive Design ทุกอุปกรณ์</span>
+                                </div>
+                            </div>
+                            <div class="flex flex-wrap gap-3">
+                                <a href="#" class="bg-latte-500 text-white px-6 py-2.5 rounded-full hover:bg-latte-600 transition-all font-medium text-sm shadow-md">
+                                    <i class="fa-solid fa-link mr-2"></i>ดูเว็บไซต์
+                                </a>
+                                <a href="#" class="border-2 border-latte-400 text-latte-700 px-6 py-2.5 rounded-full hover:bg-latte-100 transition-all font-medium text-sm">
+                                    <i class="fa-brands fa-github mr-2"></i>Source Code
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- In Progress Project - Android -->
+                <div class="bg-white rounded-3xl overflow-hidden shadow-sm border-2 border-dashed border-latte-300 mb-8 relative">
+                    <div class="absolute top-4 right-4 bg-latte-100 text-latte-700 px-4 py-2 rounded-full text-sm font-semibold in-progress-badge">
+                        <i class="fa-solid fa-clock mr-1"></i>กำลังศึกษา • 2025
+                    </div>
+                    <div class="grid md:grid-cols-2">
+                        <div class="h-64 md:h-auto bg-gradient-to-br from-green-400 via-green-500 to-green-600 flex items-center justify-center relative overflow-hidden">
+                            <div class="absolute inset-0 opacity-20">
+                                <div class="absolute top-10 left-10 w-32 h-32 bg-white rounded-full"></div>
+                                <div class="absolute bottom-10 right-10 w-48 h-48 bg-white rounded-full"></div>
+                            </div>
+                            <i class="fa-brands fa-android text-white text-8xl opacity-90 relative z-10"></i>
+                        </div>
+                        <div class="p-8 md:p-10">
+                            <div class="flex flex-wrap gap-2 mb-3">
+                                <span class="text-xs bg-latte-100 text-latte-700 px-3 py-1 rounded-full">Android Studio</span>
+                                <span class="text-xs bg-latte-100 text-latte-700 px-3 py-1 rounded-full">Java/Kotlin</span>
+                                <span class="text-xs bg-latte-100 text-latte-700 px-3 py-1 rounded-full">Mobile Dev</span>
+                            </div>
+                            <h3 class="text-2xl md:text-3xl font-bold text-latte-800 mb-3">Android Application</h3>
+                            <p class="text-latte-600 mb-5 leading-relaxed">
+                                กำลังศึกษาระบบการพัฒนาแอปพลิเคชัน Android และการ Deploy ขึ้น Play Store 
+                                เรียนรู้การออกแบบ UI/UX สำหรับ Mobile Application
+                            </p>
+                            <div class="mb-6">
+                                <div class="flex justify-between text-sm mb-2">
+                                    <span class="font-medium text-latte-700">ความคืบหน้า</span>
+                                    <span class="font-bold text-latte-800">35%</span>
+                                </div>
+                                <div class="w-full bg-latte-100 rounded-full h-3">
+                                    <div class="bg-gradient-to-r from-green-400 to-green-600 h-3 rounded-full" style="width: 35%"></div>
+                                </div>
+                            </div>
+                            <div class="space-y-2 mb-6">
+                                <div class="flex items-center gap-2 text-sm text-latte-700">
+                                    <i class="fa-solid fa-graduation-cap text-green-500"></i>
+                                    <span>ศึกษาพื้นฐาน Android Development</span>
+                                </div>
+                                <div class="flex items-center gap-2 text-sm text-latte-700">
+                                    <i class="fa-solid fa-graduation-cap text-green-500"></i>
+                                    <span>เรียนรู้ระบบ Deploy แอปขึ้น Play Store</span>
+                                </div>
+                                <div class="flex items-center gap-2 text-sm text-latte-700">
+                                    <i class="fa-solid fa-graduation-cap text-green-500"></i>
+                                    <span>ศึกษา UI/UX สำหรับ Mobile</span>
+                                </div>
+                            </div>
+                            <div class="bg-latte-50 rounded-xl p-4 border border-latte-200">
+                                <p class="text-sm text-latte-600">
+                                    <i class="fa-solid fa-lightbulb text-yellow-500 mr-2"></i>
+                                    <strong>เป้าหมาย:</strong> พัฒนาและเผยแพร่แอปพลิเคชัน Android บน Play Store
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Other Projects Grid -->
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Project 1 -->
+                    <div class="project-card bg-white rounded-3xl overflow-hidden shadow-sm border border-latte-200">
+                        <div class="h-48 bg-gradient-to-br from-latte-300 to-latte-500 flex items-center justify-center">
+                            <i class="fa-solid fa-utensils text-white text-5xl opacity-80"></i>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex gap-2 mb-3">
+                                <span class="text-xs bg-latte-100 text-latte-700 px-3 py-1 rounded-full">Graphic Design</span>
+                                <span class="text-xs bg-latte-100 text-latte-700 px-3 py-1 rounded-full">Web</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-latte-800 mb-2">Food Sampling Website</h3>
+                            <p class="text-latte-600 text-sm mb-4 leading-relaxed">
+                                เว็บไซต์ตัวอย่างอาหารและการขายอาหาร ออกแบบและพัฒนาระบบครบวงจร
+                            </p>
+                            <div class="flex gap-2 flex-wrap">
+                                <span class="text-xs text-latte-500"><i class="fa-solid fa-user-tag mr-1"></i>Graphic Design</span>
+                                <span class="text-xs text-latte-400 ml-auto">2023</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 2 -->
+                    <div class="project-card bg-white rounded-3xl overflow-hidden shadow-sm border border-latte-200">
+                        <div class="h-48 bg-gradient-to-br from-latte-400 to-latte-600 flex items-center justify-center">
+                            <i class="fa-solid fa-mobile-screen text-white text-5xl opacity-80"></i>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex gap-2 mb-3">
+                                <span class="text-xs bg-latte-100 text-latte-700 px-3 py-1 rounded-full">Android</span>
+                                <span class="text-xs bg-latte-100 text-latte-700 px-3 py-1 rounded-full">UX/UI</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-latte-800 mb-2">Hyperventilation App</h3>
+                            <p class="text-latte-600 text-sm mb-4 leading-relaxed">
+                                แอปพลิเคชันฝึกหายใจสำหรับผู้ป่วย Hyperventilation Syndrome บน Android Studio
+                            </p>
+                            <div class="flex gap-2 flex-wrap">
+                                <span class="text-xs text-latte-500"><i class="fa-solid fa-user-tag mr-1"></i>UX/UI</span>
+                                <span class="text-xs text-latte-400 ml-auto">2023</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 3 -->
+                    <div class="project-card bg-white rounded-3xl overflow-hidden shadow-sm border border-latte-200">
+                        <div class="h-48 bg-gradient-to-br from-latte-200 to-latte-400 flex items-center justify-center">
+                            <i class="fa-solid fa-utensils text-white text-5xl opacity-80"></i>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex gap-2 mb-3">
+                                <span class="text-xs bg-latte-100 text-latte-700 px-3 py-1 rounded-full">Web</span>
+                                <span class="text-xs bg-latte-100 text-latte-700 px-3 py-1 rounded-full">Database</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-latte-800 mb-2">Shabu Restaurant Reservation</h3>
+                            <p class="text-latte-600 text-sm mb-4 leading-relaxed">
+                                เว็บไซต์จองโต๊ะร้านอาหารชาบู พร้อมระบบจัดการฐานข้อมูล
+                            </p>
+                            <div class="flex gap-2 flex-wrap">
+                                <span class="text-xs text-latte-500"><i class="fa-solid fa-user-tag mr-1"></i>Database</span>
+                                <span class="text-xs text-latte-400 ml-auto">2023</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 4 -->
+                    <div class="project-card bg-white rounded-3xl overflow-hidden shadow-sm border border-latte-200">
+                        <div class="h-48 bg-gradient-to-br from-latte-300 to-latte-500 flex items-center justify-center">
+                            <i class="fa-solid fa-robot text-white text-5xl opacity-80"></i>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex gap-2 mb-3">
+                                <span class="text-xs bg-latte-100 text-latte-700 px-3 py-1 rounded-full">Chatbot</span>
+                                <span class="text-xs bg-latte-100 text-latte-700 px-3 py-1 rounded-full">Dialogflow</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-latte-800 mb-2">Line Chatbot</h3>
+                            <p class="text-latte-600 text-sm mb-4 leading-relaxed">
+                                สร้าง Line Chatbot ด้วย Dialogflow สำหรับตอบคำถามอัตโนมัติ
+                            </p>
+                            <div class="flex gap-2 flex-wrap">
+                                <span class="text-xs text-latte-400 ml-auto">2023</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 5 -->
+                    <div class="project-card bg-white rounded-3xl overflow-hidden shadow-sm border border-latte-200">
+                        <div class="h-48 bg-gradient-to-br from-latte-400 to-latte-600 flex items-center justify-center">
+                            <i class="fa-solid fa-apple-whole text-white text-5xl opacity-80"></i>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex gap-2 mb-3">
+                                <span class="text-xs bg-latte-100 text-latte-700 px-3 py-1 rounded-full">Front End</span>
+                                <span class="text-xs bg-latte-100 text-latte-700 px-3 py-1 rounded-full">AI</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-latte-800 mb-2">Fruits & Vegetables Classifier</h3>
+                            <p class="text-latte-600 text-sm mb-4 leading-relaxed">
+                                แอปพลิเคชันจำแนกความสุกและทำนายวันหมดอายุของผักและผลไม้
+                            </p>
+                            <div class="flex gap-2 flex-wrap">
+                                <span class="text-xs text-latte-500"><i class="fa-solid fa-user-tag mr-1"></i>Front End</span>
+                                <span class="text-xs text-latte-400 ml-auto">2023</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 6 -->
+                    <div class="project-card bg-white rounded-3xl overflow-hidden shadow-sm border border-latte-200">
+                        <div class="h-48 bg-gradient-to-br from-latte-200 to-latte-400 flex items-center justify-center">
+                            <i class="fa-solid fa-gamepad text-white text-5xl opacity-80"></i>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex gap-2 mb-3">
+                                <span class="text-xs bg-latte-100 text-latte-700 px-3 py-1 rounded-full">Game</span>
+                                <span class="text-xs bg-latte-100 text-latte-700 px-3 py-1 rounded-full">UX/UI</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-latte-800 mb-2">Bubble Theory Game</h3>
+                            <p class="text-latte-600 text-sm mb-4 leading-relaxed">
+                                สร้างเกมโดยใช้ทฤษฎี Bubble พร้อมออกแบบ UX/UI ที่ใช้งานง่าย
+                            </p>
+                            <div class="flex gap-2 flex-wrap">
+                                <span class="text-xs text-latte-500"><i class="fa-solid fa-user-tag mr-1"></i>UX/UI</span>
+                                <span class="text-xs text-latte-400 ml-auto">2022</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-latte-800 text-latte-200 py-12 px-6">
+        <div class="max-w-6xl mx-auto text-center">
+            <div class="flex items-center justify-center gap-2 mb-2">
+                <i class="fa-solid fa-mug-hot text-latte-400 text-2xl"></i>
+                <span class="text-xl font-bold text-white">ภูวเดช นาแหยม</span>
+            </div>
+            <p class="text-latte-400 text-sm mb-6">Phuwadech Nayam • Computer Engineer Student</p>
+            <p class="text-latte-300 mb-6 max-w-md mx-auto">
+                ขอบคุณที่สนใจในตัวผม หากต้องการร่วมงานกัน สามารถติดต่อได้ตลอดเวลา
+            </p>
+            <div class="flex justify-center gap-4 mb-8">
+                <a href="mailto:phurins2545@gmail.com" class="w-10 h-10 rounded-full bg-latte-700 flex items-center justify-center text-latte-300 hover:bg-latte-500 hover:text-white transition-all">
+                    <i class="fa-solid fa-envelope"></i>
                 </a>
-                <a href="#" class="card">
-                    <h2>About Me</h2>
-                    <p>Learn more about my journey, skills, and passions.</p>
+                <a href="tel:0617920809" class="w-10 h-10 rounded-full bg-latte-700 flex items-center justify-center text-latte-300 hover:bg-latte-500 hover:text-white transition-all">
+                    <i class="fa-solid fa-phone"></i>
                 </a>
-                <a href="#" class="card">
-                    <h2>Contact</h2>
-                    <p>Get in touch for collaborations or just to say hi!</p>
+                <a href="#" class="w-10 h-10 rounded-full bg-latte-700 flex items-center justify-center text-latte-300 hover:bg-latte-500 hover:text-white transition-all">
+                    <i class="fa-brands fa-github"></i>
+                </a>
+                <a href="#" class="w-10 h-10 rounded-full bg-latte-700 flex items-center justify-center text-latte-300 hover:bg-latte-500 hover:text-white transition-all">
+                    <i class="fa-brands fa-linkedin-in"></i>
                 </a>
             </div>
-        </main>
-        
-        <footer>
-            <p>&copy; 2026 Neko7Sharm. All rights reserved.</p>
-        </footer>
+            <div class="border-t border-latte-700 pt-6 text-sm text-latte-400">
+                © 2026 Phuwadech Nayam. Made with <i class="fa-solid fa-heart text-latte-500"></i> and lots of <i class="fa-solid fa-mug-hot text-latte-500"></i>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Education & Score Modal -->
+    <div id="education-modal" class="modal-overlay" onclick="closeModal(event)">
+        <div class="modal-content bg-white rounded-3xl max-w-2xl w-full mx-6 max-h-[90vh] overflow-y-auto shadow-2xl" onclick="event.stopPropagation()">
+            <!-- Modal Header -->
+            <div class="bg-gradient-to-r from-latte-400 to-latte-600 p-8 rounded-t-3xl text-white relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -mr-16 -mt-16"></div>
+                <div class="absolute bottom-0 left-0 w-24 h-24 bg-white/10 rounded-full -ml-12 -mb-12"></div>
+                
+                <button onclick="closeModal()" class="absolute top-4 right-4 w-10 h-10 rounded-full bg-white/20 hover:bg-white/30 flex items-center justify-center transition-colors">
+                    <i class="fa-solid fa-xmark text-xl"></i>
+                </button>
+                
+                <div class="relative z-10">
+                    <div class="flex items-center gap-3 mb-2">
+                        <i class="fa-solid fa-graduation-cap text-3xl"></i>
+                        <h2 class="text-2xl md:text-3xl font-bold">ประวัติการศึกษา & คะแนน</h2>
+                    </div>
+                    <p class="text-latte-100 text-sm">ข้อมูลการศึกษาและผลสอบภาษาอังกฤษ</p>
+                </div>
+            </div>
+
+            <!-- Modal Body -->
+            <div class="p-8">
+                <!-- Education -->
+                <div class="mb-8">
+                    <h3 class="text-lg font-bold text-latte-800 mb-4 flex items-center gap-2">
+                        <i class="fa-solid fa-school text-latte-500"></i>
+                        ประวัติการศึกษา
+                    </h3>
+                    
+                    <div class="space-y-4">
+                        <!-- University -->
+                        <div class="bg-latte-50 rounded-2xl p-5 border-l-4 border-latte-500">
+                            <div class="flex justify-between items-start mb-2 flex-wrap gap-2">
+                                <div>
+                                    <h4 class="font-bold text-latte-800">มหาวิทยาลัยศรีนครินทรวิโรฒ (องครักษ์)</h4>
+                                    <p class="text-latte-600 text-sm">Srinakharinwirot University</p>
+                                    <p class="text-latte-600 text-sm mt-1">คณะวิศวกรรมศาสตร์ • สาขาวิศวกรรมคอมพิวเตอร์</p>
+                                    <p class="text-latte-500 text-xs">Department of Computer Engineering, Faculty of Engineering</p>
+                                </div>
+                                <span class="text-xs bg-latte-200 text-latte-700 px-3 py-1 rounded-full whitespace-nowrap">2564 - 2569</span>
+                            </div>
+                            <div class="flex flex-wrap items-center gap-4 mt-3">
+                                <div class="flex items-center gap-2">
+                                    <i class="fa-solid fa-star text-yellow-500"></i>
+                                    <span class="text-sm text-latte-700 font-medium">GPAX: 2.57</span>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <i class="fa-solid fa-graduation-cap text-latte-500"></i>
+                                    <span class="text-sm text-latte-700 font-medium">ปริญญาตรี</span>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <i class="fa-solid fa-calendar-check text-latte-500"></i>
+                                    <span class="text-sm text-latte-700 font-medium">Expected 2026</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- High School -->
+                        <div class="bg-latte-50 rounded-2xl p-5 border-l-4 border-latte-300">
+                            <div class="flex justify-between items-start mb-2 flex-wrap gap-2">
+                                <div>
+                                    <h4 class="font-bold text-latte-800">โรงเรียนสิงห์สมุทร</h4>
+                                    <p class="text-latte-600 text-sm">Singsamut School</p>
+                                    <p class="text-latte-600 text-sm mt-1">แผนการเรียน วิทย์-คณิต (Mathematics - Science Program)</p>
+                                </div>
+                                <span class="text-xs bg-latte-200 text-latte-700 px-3 py-1 rounded-full whitespace-nowrap">2561 - 2564</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TOEIC Score -->
+                <div>
+                    <h3 class="text-lg font-bold text-latte-800 mb-4 flex items-center gap-2">
+                        <i class="fa-solid fa-language text-latte-500"></i>
+                        ผลสอบภาษาอังกฤษ (TOEIC)
+                    </h3>
+                    
+                    <div class="bg-gradient-to-br from-latte-100 to-latte-200 rounded-2xl p-6 relative overflow-hidden">
+                        <div class="absolute top-0 right-0 opacity-10">
+                            <i class="fa-solid fa-language text-8xl text-latte-800"></i>
+                        </div>
+                        
+                        <div class="relative z-10">
+                            <div class="flex items-center justify-between mb-4 flex-wrap gap-4">
+                                <div>
+                                    <p class="text-sm text-latte-600 mb-1">TOEIC Total Score</p>
+                                    <h4 class="text-4xl font-bold text-latte-800">505<span class="text-lg text-latte-500 font-normal">/990</span></h4>
+                                </div>
+                                <div class="w-20 h-20 rounded-full bg-white shadow-md flex items-center justify-center">
+                                    <div class="text-center">
+                                        <p class="text-xs text-latte-500">ระดับ</p>
+                                        <p class="text-sm font-bold text-latte-800">Normal</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Score Bars -->
+                            <div class="space-y-3">
+                                <div>
+                                    <div class="flex justify-between text-sm mb-1">
+                                        <span class="text-latte-700 font-medium"><i class="fa-solid fa-headphones mr-1"></i>Listening</span>
+                                        <span class="text-latte-800 font-bold">300/495</span>
+                                    </div>
+                                    <div class="w-full bg-white rounded-full h-2.5">
+                                        <div class="bg-latte-500 h-2.5 rounded-full" style="width: 60.6%"></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="flex justify-between text-sm mb-1">
+                                        <span class="text-latte-700 font-medium"><i class="fa-solid fa-book-open mr-1"></i>Reading</span>
+                                        <span class="text-latte-800 font-bold">205/495</span>
+                                    </div>
+                                    <div class="w-full bg-white rounded-full h-2.5">
+                                        <div class="bg-latte-500 h-2.5 rounded-full" style="width: 41.4%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <p class="text-xs text-latte-500 mt-4">
+                                <i class="fa-solid fa-info-circle mr-1"></i>
+                                ระดับภาษาอังกฤษ: Normal (ใช้งานได้ทั่วไป)
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
